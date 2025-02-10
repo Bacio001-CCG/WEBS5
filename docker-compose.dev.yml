@@ -1,7 +1,9 @@
 version: "3.8"
 services:
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     ports:
       - "5000:5000"
     volumes:
@@ -10,3 +12,5 @@ services:
       - ./package-lock.json:/app/package-lock.json
       - ./.env:/app/.env
     stdin_open: true
+    env_file:
+      - .env
